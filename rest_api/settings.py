@@ -79,6 +79,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'rest_api.wsgi.application'
 
 REST_FRAMEWORK = {
+    #プロジェクト全体に対して、ユーザーの認証をクリアした人だけが各viewにアクセスできるようにしている
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
