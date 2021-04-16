@@ -1,4 +1,4 @@
-from rest_framework import genetics, permission, viewsets, status
+from rest_framework import generics, permissions, viewsets, status
 from .serializers import UserSerializer, SegmentSerializer, BrandSerializer, VehicleSerializer
 from .models import Segment, Brand, Vehicle
 from rest_framework.response import Response
@@ -11,7 +11,7 @@ class CreateUserView(generics.CreateAPIView):
     #このviewに適用したいシリアライザーを入れる
     serializer_class = UserSerializer
     #parmissionを上書きすることで誰でもCreateUserViewにアクセスできるように変更
-    parmission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.AllowAny,)
 
 
 #ユーザーの情報を検索して表示
@@ -40,17 +40,17 @@ class ProfileUserView(generics.RetrieveUpdateAPIView):
 #二行書くだけでCRUDの機能を使うことができる
 class SegmentViewSet(viewsets.ModelViewSet):
     #modelviewsetを使う場合は、querysetにオブジェクトの一覧を格納する必要がある
-    queryset = Segment.object.all()
+    queryset = Segment.objects.all()
     serializer_class = SegmentSerializer
 
 
 class BrandViewSet(viewsets.ModelViewSet):
-    queryset = Brand.object.all()
+    queryset = Brand.objects.all()
     serializer_class = BrandSerializer
 
 
 class VehicleViewSet(viewsets.ModelViewSet):
-    queryset = Vehicle.object.all()
+    queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
 
     #新しくvehicleのオブジェクトを作る際にログインしているユーザーの情報を割り当てる
