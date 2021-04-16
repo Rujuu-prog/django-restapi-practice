@@ -20,7 +20,7 @@ urlpatterns = [
     path('profile/', views.ProfileUserView.as_view(), name='profile'),
     #tokenを返すエンドポイントとしてauth/を追加
     #authのエンドポイントに対して、usernameとpasswordでPOSTメソッドでアクセスしたときに、tokenを返すエンドポイント
-    #django-rest-frameowrkに標準装備されているobtain_auth_tokenに紐付けることで実装できる
+    #django-rest-frameworkに標準装備されているobtain_auth_tokenに紐付けることで実装できる
     path('auth/', obtain_auth_token, name='auth'),
     #ルートのurlにアクセスがあった場合はrouter.registerのurlにアクセスさせる
     path('', include(router.urls)),

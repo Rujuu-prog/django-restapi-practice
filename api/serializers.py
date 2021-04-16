@@ -26,13 +26,13 @@ class UserSerializer(serializers.ModelSerializer):
 class SegmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Segment
-        fields = ['is', 'segment_name']
+        fields = ['id', 'segment_name']
 
 
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
-        fields = ['is', 'brand_name']
+        fields = ['id', 'brand_name']
 
 
 class VehicleSerializer(serializers.ModelSerializer):
@@ -46,6 +46,6 @@ class VehicleSerializer(serializers.ModelSerializer):
         model = Vehicle
         #getメソッドでデータを返す場合は、foreignKeyで紐付いているオブジェクトのidしか返らない。(segmentとbrand)
         #新しくsegmentとbrandのオブジェクト内の、segment_nameとbrand_nameを使って文字列を表示したいから、fieldに追加
-        fields = ['is', 'vehicle_name', 'release_year', 'price', 'segment','brand', 'segment_name', 'brand_name']
+        fields = ['id', 'vehicle_name', 'release_year', 'price', 'segment','brand', 'segment_name', 'brand_name']
         # viewsで、登録した人が誰なのかをログインしている情報から取得するため、readonlyに設定
         extra_kwargs = {'user': {'read_only': True}}
